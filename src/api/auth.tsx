@@ -12,7 +12,6 @@ export const createUser = async (userInfo: userInfoType) => {
   }
 };
 
-
 export const verifyEmail = async (OTP: OTPType) => {
   try {
     const { data } = await client.post("/user/verify-email", OTP);
@@ -21,7 +20,6 @@ export const verifyEmail = async (OTP: OTPType) => {
     return { error: error };
   }
 };
-
 
 export const signInUser = async (userInfo: loginInfo) => {
   try {
@@ -32,15 +30,42 @@ export const signInUser = async (userInfo: loginInfo) => {
   }
 };
 
-
 export const getIsAuth = async (token: string) => {
   try {
     const { data } = await client.get("/user/is-auth", {
       headers: {
-        Authorization: 'Bearer ' + token,
-        accept: 'application/json',
-      }
+        Authorization: "Bearer " + token,
+        accept: "application/json",
+      },
     });
+    return data;
+  } catch (error: any) {
+    return { error: error };
+  }
+};
+
+export const forgetPassword = async (email: string) => {
+  try {
+    const { data } = await client.post("/user/forget-password", {email: email});
+    return data;
+  } catch (error: any) {
+    return { error: error };
+  }
+};
+
+
+export const verifyResetPasswordToken = async (token: string, userId: string) => {
+  try {
+    const { data } = await client.post("/user/verify-reset-password-token", {token, userId});
+    return data;
+  } catch (error: any) {
+    return { error: error };
+  }
+};
+
+export const resetPassword = async (newPassword: string, userId: string, token: string) => {
+  try {
+    const { data } = await client.post("/user/reset-password", {newPassword, userId, token});
     return data;
   } catch (error: any) {
     return { error: error };

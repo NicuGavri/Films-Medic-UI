@@ -7,8 +7,8 @@ const SignUpForm = () => {
 
   return (
     <div className=" flex justify-center items-center h-full">
-      <div className="bg-[#0e0d17] border-gray-600 border-[2px] rounded-xl w-[400px] h-[360px] flex items-center justify-center">
-        <form className="w-[300px] text-center bg-inherit text-white py-2 space-y-4">
+      <div className="bg-purple-secondary border-gray-600 border-[2px] rounded-xl w-96 h-96 flex items-center justify-center">
+        <form className="w-80 text-center bg-inherit text-white py-2 space-y-4">
           <h1>Sign Up</h1>
           <SimpleInput
             handleChange={handleChange}

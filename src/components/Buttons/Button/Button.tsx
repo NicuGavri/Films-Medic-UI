@@ -1,7 +1,7 @@
-import {FC} from "react";
+import { FC } from "react";
 import { ButtonProps } from "./types/types";
 
-const Button: FC<ButtonProps> = ({children}) => {
+const Button: FC<ButtonProps> = ({ children }) => {
   return (
     <button
       type="button"
