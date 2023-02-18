@@ -17,7 +17,7 @@ export const useSignUp = () => {
   const navigate = useNavigate();
 
   const isValidEmail = (email: string) => {
-    const isValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const isValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     return isValid.test(email);
   };
 
@@ -40,8 +40,7 @@ export const useSignUp = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-  
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value }); 
   };
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -65,7 +64,7 @@ export const useSignUp = () => {
     if (isLoggedIn) {
       navigate("/");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
 
   return {
     handleChange,

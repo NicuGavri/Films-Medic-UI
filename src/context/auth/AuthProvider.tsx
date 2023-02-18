@@ -2,6 +2,7 @@ import { createContext, useContext, FC, useState, useEffect } from "react";
 import { AuthProps } from "./types";
 import { AuthContextt } from "./types";
 import { getIsAuth, signInUser } from "../../api/auth";
+import { NotificationState } from "../notification/NotificationProvider";
 
 const defaultAuthInfo = {
     profile: null,
@@ -21,6 +22,8 @@ const authContext = createContext<AuthContextt>({
 
 const AuthProvider: FC<AuthProps> = ({ children }) => {
   const [authInfo, setAuthInfo] = useState({ ...defaultAuthInfo });
+
+  const {updateNotification} = NotificationState()
 
   const handleLogin = async (email: string, password: string) => {
     setAuthInfo({ ...authInfo, isPending: true });
@@ -53,6 +56,7 @@ const AuthProvider: FC<AuthProps> = ({ children }) => {
     const {error, user} = await getIsAuth(token)
 
     if(error){
+      updateNotification('error', error)
       return setAuthInfo({...authInfo, isPending: false, error})
     } 
 

@@ -4,7 +4,7 @@ import {
   SignUp,
   ForgotPassword,
   VerifyEmail,
-  ConfirmPassword,
+  ResetPassword,
 } from "./pages/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ThemeProvider from "./context/theme/ThemeProvider";
@@ -15,8 +15,8 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
-        <AuthProvider>
-          <NotificationProvider>
+        <NotificationProvider>
+          <AuthProvider>
             <BrowserRouter>
               <Routes>
                 <Route index element={<Home />} />
@@ -25,14 +25,14 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/verify-email" element={<VerifyEmail />} />
                 <Route
-                  path="/confirm-password"
-                  element={<ConfirmPassword />}
+                  path="/reset-password"
+                  element={<ResetPassword />}
                 ></Route>
                 <Route path="*" element={<div>Not found</div>} />
               </Routes>
             </BrowserRouter>
-          </NotificationProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </NotificationProvider>
       </ThemeProvider>
     </div>
   );
